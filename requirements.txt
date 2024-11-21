@@ -1,10 +1,10 @@
-streamlit==1.25.0         # Stable version for building web apps
-pandas==1.5.3             # Compatible with Streamlit
-numpy==1.24.3             # Ensures compatibility with TensorFlow and pandas
-tensorflow==2.11.0        # Stable TensorFlow version (for both CPU/GPU)
-joblib==1.2.0             # For saving models and scalers
-scikit-learn==1.1.3       # Works well with joblib and pandas
-openpyxl==3.1.2           # For reading and writing Excel files
-xgboost==1.7.6            # Stable version for classification tasks
-imbalanced-learn==0.10.1  # Compatible with scikit-learn for SMOTE
+streamlit       # Stable version for building web apps
+pandas         # Compatible with Streamlit
+numpy            # Ensures compatibility with TensorFlow and pandas
+tensorflow       # Stable TensorFlow version (for both CPU/GPU)
+joblib         # For saving models and scalers
+scikit-learn       # Works well with joblib and pandas
+openpyxl         # For reading and writing Excel files
+xgboost           # Stable version for classification tasks
+imbalanced-learn # Compatible with scikit-learn for SMOTE
 
