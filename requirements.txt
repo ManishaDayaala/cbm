@@ -3,6 +3,7 @@ pandas         # Compatible with Streamlit
 numpy            # Ensures compatibility with TensorFlow and pandas
 tensorflow       # Stable TensorFlow version (for both CPU/GPU)
 joblib         # For saving models and scalers
+scikeras
 scikit-learn       # Works well with joblib and pandas
 openpyxl         # For reading and writing Excel files
 xgboost           # Stable version for classification tasks
