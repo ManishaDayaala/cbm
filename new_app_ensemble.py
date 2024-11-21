@@ -27,7 +27,7 @@ import random
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import joblib
-from tkinter import messagebox
+
 
 # Set a random seed for reproducibility
 def set_random_seed(seed_value=42):
@@ -640,25 +640,28 @@ if st.button("Check BD Classification"):
     st.write(result)
     st.success("Prediction complete!")
 
+
+
+###########################                                    #######################################
+
+# Use an expander to provide breakdown code information
+with st.expander("Breakdown Classification and Codes", expanded=True):
+    st.markdown("""
+    Each breakdown type is assigned a unique code to simplify identification. Here’s what each code represents:
+
+    - **Code 1: Contact Wheel and Spindle Issues**  
+      Issues specifically related to the Contact Wheel or Spindle mechanisms of the machine.
+    
+    - **Code 2: Idler Wheel, Belt Tension Cylinder, and Work Rest Issues**  
+      Covers problems with the Idler Wheel, Belt Tension Cylinder, and Work Rest components.
+    
+    - **Code 3: Regulating Wheel, Ball Screw Rod, and LM Rail Issues**  
+      Applies to issues with the Regulating Wheel, Ball Screw Rod, or LM Rail systems.
+    """)
+
        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ################################        time prediction             #############################
-
-
-
 
 import streamlit as st
 import os
@@ -817,22 +820,7 @@ if st.button("Predict Time"):
 
 
 
-###########################                                    #######################################
 
-# Use an expander to provide breakdown code information
-with st.expander("Breakdown Classification and Codes", expanded=True):
-    st.markdown("""
-    Each breakdown type is assigned a unique code to simplify identification. Here’s what each code represents:
-
-    - **Code 1: Contact Wheel and Spindle Issues**  
-      Issues specifically related to the Contact Wheel or Spindle mechanisms of the machine.
-    
-    - **Code 2: Idler Wheel, Belt Tension Cylinder, and Work Rest Issues**  
-      Covers problems with the Idler Wheel, Belt Tension Cylinder, and Work Rest components.
-    
-    - **Code 3: Regulating Wheel, Ball Screw Rod, and LM Rail Issues**  
-      Applies to issues with the Regulating Wheel, Ball Screw Rod, or LM Rail systems.
-    """)
 
 
 
