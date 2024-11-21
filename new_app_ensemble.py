@@ -157,7 +157,9 @@ if st.button("Save Files"):
 
 ###################### DATA PREPROCESSING   ############################
 
-
+# Ensure the TemporaryData folder exists
+if not os.path.exists(test_file_path):
+    os.makedirs(test_file_path)
 # Process files and apply preprocessing logic
 def preprocess_files():
     try:
