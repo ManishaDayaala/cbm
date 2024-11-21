@@ -21,7 +21,6 @@ import shutil
 import pandas as pd
 from datetime import datetime
 import streamlit as st
-
 import numpy as np
 import random
 import tensorflow as tf
@@ -59,6 +58,20 @@ st.markdown("Upload your files, and they will be preprocessed accordingly.")
 
 #uploaded_files = st.file_uploader("Drop files here:", accept_multiple_files=True, on_change=lambda: on_file_drop(uploaded_files))
 
+# Initialize file uploader key in session state
+if "file_uploader_key" not in st.session_state:
+    st.session_state["file_uploader_key"] = 0
+
+# File uploader
+#uploaded_files = st.file_uploader("Upload your files", accept_multiple_files=True, key=str(st.session_state["file_uploader_key"]))
+uploaded_files = st.file_uploader(
+    "Upload Excel files",
+    type=['xlsx'],
+    accept_multiple_files=True,
+    key=st.session_state["file_uploader_key"]
+)
+
+
 
 # Show status
 status_placeholder = st.empty()
@@ -79,6 +92,11 @@ def clear_saved_files():
     except Exception as e:
         status_placeholder.error(f"Error: {e}")
 
+# Ensure the TemporaryData folder exists
+if not os.path.exists(folderpath):
+    os.makedirs(folderpath)
+
+
 # Function to handle file saving (clear old files before saving new ones)
 def save_files(uploaded_files):
     try:
@@ -90,10 +108,15 @@ def save_files(uploaded_files):
         clear_saved_files()
 
         # Save each file from the uploaded list to the target folder
+        #for file in uploaded_files:
+            #with open(os.path.join(folderpath, file.name), "wb") as f:
+                #f.write(file.getbuffer())
+        # Save each uploaded file
         for file in uploaded_files:
-            with open(os.path.join(folderpath, file.name), "wb") as f:
+            file_path = os.path.join(folderpath, file.name)
+            with open(file_path, "wb") as f:
                 f.write(file.getbuffer())
-
+                
         status_placeholder.success("Files saved successfully!")
         # Clear uploaded files from the interface after saving   addedd extra
         st.session_state["file_uploader_key"] += 1
@@ -102,34 +125,7 @@ def save_files(uploaded_files):
     except Exception as e:
         status_placeholder.error(f"Error: {e}")
 
-### Function to clear uploaded files list
-##def clear_uploaded_files():
-##    global uploaded_files
-##    uploaded_files = []  # Clear the list
-##    status_placeholder.success("Uploaded files list cleared!")
-##
-### Function to remove the last uploaded file from the list
-##def clear_last_uploaded_file():
-##    global uploaded_files
-##    if uploaded_files:
-##        uploaded_files.pop()  # Remove the last file from the list
-##        status_placeholder.success("Last uploaded file removed!")
-##    else:
-##        status_placeholder.warning("No files to remove!")
-##
-### Streamlit buttons and actions
-##if st.button("Clear Uploaded Files"):
-##    clear_uploaded_files()
-##
-##if st.button("Clear Last Uploaded File"):
-##    clear_last_uploaded_file()
 
-# Initialize file uploader key in session state
-if "file_uploader_key" not in st.session_state:
-    st.session_state["file_uploader_key"] = 0
-
-# File uploader
-uploaded_files = st.file_uploader("Upload your files", accept_multiple_files=True, key=str(st.session_state["file_uploader_key"]))
 
 # Clear previous uploaded files display automatically before handling new uploads
 if st.button("Save Files"):
