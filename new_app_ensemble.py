@@ -21,7 +21,7 @@ import shutil
 import pandas as pd
 from datetime import datetime
 import streamlit as st
-from tkinterdnd2 import TkinterDnD, DND_FILES
+
 import numpy as np
 import random
 import tensorflow as tf
@@ -36,7 +36,7 @@ def set_random_seed(seed_value=42):
     tf.random.set_seed(seed_value)
 
 # Define the main folder path
-MAINFOLDER = r"D:\APPdata"
+MAINFOLDER = r"."
 
 # Create other paths relative to the main folder
 training_file_path = os.path.join(MAINFOLDER, "Training", "Training.xlsx")  # FIXED TRAINING DATA
