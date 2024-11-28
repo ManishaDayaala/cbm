@@ -1,4 +1,5 @@
 dill
+matplotlib
 streamlit       # Stable version for building web apps
 pandas         # Compatible with Streamlit
 numpy            # Ensures compatibility with TensorFlow and pandas
